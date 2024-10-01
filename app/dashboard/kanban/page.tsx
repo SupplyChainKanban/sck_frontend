@@ -144,7 +144,7 @@ export default function Page() {
             <h1 className="text-center text-xl my-4">
               {state.name.replaceAll('_', ' ')}
             </h1>
-            <div className="mx-4 flex flex-col h-[calc(100%-80px)] gap-2 mb-5 overflow-y-auto">
+            <div className="mx-2 flex flex-col h-[calc(100%-80px)] gap-2 mb-5 overflow-y-auto px-2">
               {
                 state.items.map((item) => (
                   <Card key={item.materialID} className="bg-blue-950 border-blue-900">

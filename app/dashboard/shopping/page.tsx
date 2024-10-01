@@ -13,11 +13,11 @@ const fetchData = async (limit = 2000, page = 1) => {
       materialCategory: item.processedData.materialCategory,
       materialName: item.materialName,
       processedQuantity: item.processedData.processedQuantity,
-      processedDate: item.processedData.processedDate,
+      processedDate: item.processedData.processedDate.split('T')[0],
       costPerUnit: item.processedData.costPerUnit,
       totalCost: item.processedData.totalCost,
       unitOfMeasure: item.processedData.unitOfMeasure,
-      createdAt: item.processedData.createdAt,
+      createdAt: item.processedData.createdAt.split('T')[0],
 
     }
   })

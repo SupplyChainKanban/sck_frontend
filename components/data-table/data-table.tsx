@@ -21,6 +21,15 @@ import {
 } from "@/components/ui/table"
 
 import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+} from "@/components/ui/sheet"
+
+import {
     Select,
     SelectContent,
     SelectGroup,
@@ -30,6 +39,7 @@ import {
     SelectValue,
 } from "@/components/ui/select"
 import { Button } from "../ui/button"
+import { toast } from "sonner"
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
@@ -46,6 +56,7 @@ export function DataTable<TData, TValue>({
         []
     )
     const [currentStatus, setCurrentStatus] = useState<string>('')
+    const [open, setOpen] = useState(false)
 
 
     const table = useReactTable({
@@ -64,6 +75,21 @@ export function DataTable<TData, TValue>({
     return (
         <div>
             <div className="flex justify-between items-center pb-4">
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                        setOpen(true)
+                        // toast.success("Registro creado!", {
+                        //     position: 'top-right',
+                        //     duration: 5000,
+                        //     description: `Edición realizada: ${new Date()}`
+                        // })
+                    }
+                    }
+                >
+                    Nuevo registro
+                </Button>
                 <Select
                     value={currentStatus}
                     onValueChange={(value) => {
@@ -91,16 +117,18 @@ export function DataTable<TData, TValue>({
                         </SelectGroup>
                     </SelectContent>
                 </Select>
-                <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                        console.log('Crear')
-                    }
-                    }
-                >
-                    Nuevo registro
-                </Button>
+                <Sheet open={open} onOpenChange={setOpen}>
+                    {/* <SheetTrigger>Open</SheetTrigger> */}
+                    <SheetContent className="bg-blue-950">
+                        <SheetHeader>
+                            <SheetTitle>Nueva entrada</SheetTitle>
+                            <SheetDescription>
+                                Se ingresan los datos para realizar una entrada manual
+                            </SheetDescription>
+                        </SheetHeader>
+                    </SheetContent>
+                </Sheet>
+
             </div>
             <div className="rounded-md border">
                 <Table>
