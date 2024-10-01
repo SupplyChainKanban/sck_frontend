@@ -50,7 +50,17 @@ export const columns: ColumnDef<ProcessedData>[] = [
     },
     {
         accessorKey: "costPerUnit",
-        header: "Costo unitario",
+        // header: "Costo unitario",
+        header: () => <div className="text-center">Costo unitario</div>,
+        cell: ({ row }) => {
+            const amount = parseFloat(row.getValue("costPerUnit"))
+            const formatted = new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD",
+            }).format(amount)
+
+            return <div className="text-center font-medium">{formatted}</div>
+        },
     },
     {
         accessorKey: "totalCost",

@@ -5,7 +5,7 @@ const fetchData = async (limit = 2000, page = 1) => {
   const response = await fetch(`http://localhost:3000/api/sck-analytics/data-analytics?page=${page}&limit=${limit}`);
   const data = await response.json();
 
-  const information: ProcessedData[] = data.data.map((item: any) => {
+  const AllInformation: ProcessedData[] = data.data.map((item: any) => {
     return {
       id: item.id,
       sourceType: item.processedData.sourceType,
@@ -22,20 +22,33 @@ const fetchData = async (limit = 2000, page = 1) => {
     }
   })
 
+  const materialIDArray = AllInformation.map((item) => {
+    return item.materialID
+  })
+
+  const information = AllInformation.filter((item) => {
+    return item.sourceType === 'MANUAL'
+  })
+
+  const uniqueMaterialID = new Set(materialIDArray);
+
+  let materialIDItems = Array.from(uniqueMaterialID)
+
   return {
     information,
     meta: data.meta,
+    materialIDItems,
   };
 }
 
 export default async function Page() {
-  const { information, meta } = await fetchData();
+  const { information, meta, materialIDItems } = await fetchData();
 
   console.log({ meta })
 
   return (
     <div>
-      <DataTable columns={columns} data={information} />
+      <DataTable columns={columns} data={information} selectItems={materialIDItems} />
     </div>
   );
 }
