@@ -1,7 +1,7 @@
 import { columns, ProcessedData } from "@/components/data-table/columns";
 import { DataTable } from "@/components/data-table/data-table";
 
-const fetchData = async (limit = 20, page = 1) => {
+const fetchData = async (limit = 2000, page = 1) => {
   const response = await fetch(`http://localhost:3000/api/sck-analytics/data-analytics?page=${page}&limit=${limit}`);
   const data = await response.json();
 
@@ -36,7 +36,6 @@ export default async function Page() {
   return (
     <div>
       <DataTable columns={columns} data={information} />
-      hola
     </div>
   );
 }

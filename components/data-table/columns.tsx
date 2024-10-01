@@ -2,6 +2,8 @@
 
 import { ColumnDef } from "@tanstack/react-table"
 import { MoreHorizontal } from "lucide-react"
+import { toast } from "sonner"
+
 
 import { Button } from "@/components/ui/button"
 import {
@@ -88,12 +90,31 @@ export const columns: ColumnDef<ProcessedData>[] = [
                     <DropdownMenuContent align="end" className="bg-blue-950">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem
-                            onClick={() => navigator.clipboard.writeText(payment.id)}
-                        >
+                            onClick={() => {
+                                navigator.clipboard.writeText(payment.id)
+                                toast.success("Registro editado!", {
+                                    position: 'top-right',
+                                    duration: 5000,
+                                    description: `Edición realizada: ${new Date()}`
+                                })
+                            }
+                            }                        >
                             Editar
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Eliminar</DropdownMenuItem>
+                        <DropdownMenuItem
+                            onClick={() => {
+                                navigator.clipboard.writeText(payment.id)
+                                toast.success("Registro eliminado!", {
+                                    position: 'top-right',
+                                    duration: 5000,
+                                    description: `Eliminación realizada: ${new Date()}`
+                                })
+                            }
+                            }
+                        >
+                            Eliminar
+                        </DropdownMenuItem>
                         {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
                     </DropdownMenuContent>
                 </DropdownMenu>
