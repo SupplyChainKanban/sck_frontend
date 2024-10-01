@@ -129,7 +129,7 @@ export default function Page() {
             <h1 className="text-center text-xl my-4">
               {state.name.replaceAll('_', ' ')}
             </h1>
-            <div className="mx-4 flex flex-col h-full gap-2">
+            <div className="mx-4 flex flex-col h-[calc(100%-60px)] gap-2 pb-5">
               {
                 state.items.map((item) => (
                   <Card key={item.materialID} className="bg-blue-950 border-blue-900">
@@ -168,7 +168,7 @@ export default function Page() {
                       </div>
                       <div className="flex justify-between">
                         <span>Tendencia: </span>
-                        <span className="lowercase">{`${item.usedTrend}`}</span>
+                        <span className="lowercase">{`${item.usedTrend} días/compra`}</span>
                       </div>
                     </CardContent>
                     <CardFooter className="flex justify-between">

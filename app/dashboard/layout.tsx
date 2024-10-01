@@ -267,9 +267,9 @@ export default function DashboardLayout({ children }: Readonly<{ children: React
     //   </div>
     // </>
     <main className="flex flex-row mt-7 gap-4 mx-4">
-      <nav className="hidden sm:flex flex-col w-[370px] min-h-[calc(100vh-3.0rem)] bg-white bg-opacity-10 p-5 rounded-3xl">
+      <nav className="hidden sm:flex flex-col w-[275px] min-h-[calc(100vh-3.0rem)] bg-white bg-opacity-10 p-5 rounded-3xl">
         <h1 className="font-bold text-lg lg:text-3xl bg-gradient-to-br from-white via-white/50 bg-clip-text text-transparent">
-          SupplyChainKanban<span className="text-blue-700">.</span>
+          Supply Chain Kanban<span className="text-blue-700">.</span>
         </h1>
         {/* <span className="text-xl">Bienvenido</span> */}
 
