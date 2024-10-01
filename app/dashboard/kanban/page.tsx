@@ -43,6 +43,21 @@ const states = [
         usedTrend: 'increasing',
         recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
       },
+      {
+        materialID: 'SLACCLAST0',
+        materialName: 'SUELA DE CAUCHO COD 2401 CLÁSICA NUEVA T. 40',
+        unitOfMeasure: 'UNIDADES',
+        purchaseQuantity: 300,
+        costPerUnit: 23.92,
+        purchaseDate: '2024-07-23',
+        totalQuantityUsed: 20796,
+        totalQuantityPurchased: 25480,
+        lastPurchasedDate: '2022-07-08',
+        avgDailyUsed: 98.09,
+        avgTimeBetweenPurchases: 29.5,
+        usedTrend: 'increasing',
+        recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
+      },
     ]
   },
   {
@@ -129,7 +144,7 @@ export default function Page() {
             <h1 className="text-center text-xl my-4">
               {state.name.replaceAll('_', ' ')}
             </h1>
-            <div className="mx-4 flex flex-col h-[calc(100%-60px)] gap-2 pb-5">
+            <div className="mx-4 flex flex-col h-[calc(100%-80px)] gap-2 mb-5 overflow-y-auto">
               {
                 state.items.map((item) => (
                   <Card key={item.materialID} className="bg-blue-950 border-blue-900">
