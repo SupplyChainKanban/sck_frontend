@@ -15,6 +15,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { toast } from "sonner"
 
 
 
@@ -64,15 +65,30 @@ export const ConsumptionForm = () => {
             }
         }
 
-        const response = await fetch(`http://localhost:3000/api/sck-data-ingestion/raw-data`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(purchase),
-        })
-        // const jsonResponse = await response.json();
-        console.log({ response })
+        try {
+
+            const response = await fetch(`http://localhost:3000/api/sck-data-ingestion/raw-data`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(purchase),
+            })
+            const jsonResponse = await response.json();
+            if (!response.ok) throw new Error('Error en el ingreso de un consumo')
+            toast.success("Registro se creo correctamente!", {
+                position: 'top-right',
+                duration: 5000,
+                description: `Se creó el registro ${jsonResponse.id}`
+            })
+
+        } catch (error) {
+            toast.error("Registro no se creo correctamente!", {
+                position: 'top-right',
+                duration: 5000,
+                description: `${error}`
+            })
+        }
     }
 
 

@@ -84,11 +84,6 @@ export function DataTable<TData, TValue>({
                     size="sm"
                     onClick={() => {
                         setOpen(true)
-                        // toast.success("Registro creado!", {
-                        //     position: 'top-right',
-                        //     duration: 5000,
-                        //     description: `Edición realizada: ${new Date()}`
-                        // })
                     }
                     }
                 >
