@@ -48,7 +48,7 @@ export default async function Page() {
 
   return (
     <div>
-      <DataTable columns={columns} data={information} selectItems={materialIDItems} />
+      {/* <DataTable columns={columns} data={information} selectItems={materialIDItems} /> */}
     </div>
   );
 }

@@ -45,12 +45,14 @@ interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
     selectItems: string[]
+    form: React.ReactNode
 }
 
 export function DataTable<TData, TValue>({
     columns,
     data,
     selectItems = [],
+    form,
 }: Readonly<DataTableProps<TData, TValue>>) {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
         []
@@ -117,7 +119,7 @@ export function DataTable<TData, TValue>({
                         </SelectGroup>
                     </SelectContent>
                 </Select>
-                <Sheet open={open} onOpenChange={setOpen}>
+                <Sheet open={open} onOpenChange={setOpen} >
                     {/* <SheetTrigger>Open</SheetTrigger> */}
                     <SheetContent className="bg-blue-950">
                         <SheetHeader>
@@ -126,6 +128,7 @@ export function DataTable<TData, TValue>({
                                 Se ingresan los datos para realizar una entrada manual
                             </SheetDescription>
                         </SheetHeader>
+                        {form}
                     </SheetContent>
                 </Sheet>
 

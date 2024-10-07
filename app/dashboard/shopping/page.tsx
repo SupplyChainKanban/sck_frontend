@@ -1,5 +1,6 @@
 import { columns, ProcessedData } from "@/components/data-table/columns";
 import { DataTable } from "@/components/data-table/data-table";
+import { ManualForm } from '../../../components/forms/ManualForm';
 
 const fetchData = async (limit = 2000, page = 1) => {
   const response = await fetch(`http://localhost:3000/api/sck-analytics/data-analytics?page=${page}&limit=${limit}`);
@@ -48,7 +49,7 @@ export default async function Page() {
 
   return (
     <div>
-      <DataTable columns={columns} data={information} selectItems={materialIDItems} />
+      <DataTable columns={columns} data={information} selectItems={materialIDItems} form={<ManualForm />} />
     </div>
   );
 }
