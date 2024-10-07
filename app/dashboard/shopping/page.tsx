@@ -49,7 +49,7 @@ export default async function Page() {
 
   return (
     <div>
-      <DataTable columns={columns} data={information} selectItems={materialIDItems} form={<ManualForm />} />
+      <DataTable columns={columns} data={information} selectItems={materialIDItems} form={<ManualForm />} title={'Compras'} />
     </div>
   );
 }

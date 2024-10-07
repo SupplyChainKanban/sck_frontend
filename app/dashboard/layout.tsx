@@ -7,7 +7,7 @@ import { GrConfigure } from "react-icons/gr";
 import { MdDataUsage, MdOutlineAttachMoney } from "react-icons/md";
 
 const links = [
-  { name: "Dashboard", href: "kanban", description: "Tablero de estado de las compras", icon: (<BiSolidDashboard />) },
+  { name: "Kanban", href: "kanban", description: "Tablero de estado de las compras", icon: (<BiSolidDashboard />) },
   { name: "Compras", href: "shopping", description: "Gestión de las compras", icon: (<MdOutlineAttachMoney />) },
   { name: "Consumos", href: "consumption", description: "Gestión de los consumos", icon: (<MdDataUsage />) },
 ];

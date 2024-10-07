@@ -46,6 +46,7 @@ interface DataTableProps<TData, TValue> {
     data: TData[]
     selectItems: string[]
     form: React.ReactNode
+    title: string
 }
 
 export function DataTable<TData, TValue>({
@@ -53,6 +54,7 @@ export function DataTable<TData, TValue>({
     data,
     selectItems = [],
     form,
+    title,
 }: Readonly<DataTableProps<TData, TValue>>) {
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
         []
@@ -92,6 +94,9 @@ export function DataTable<TData, TValue>({
                 >
                     Nuevo registro
                 </Button>
+                <span className="text-2xl font-bold">
+                    {title}
+                </span>
                 <Select
                     value={currentStatus}
                     onValueChange={(value) => {
