@@ -9,127 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { connectToServer } from "@/utilities/socket-client";
 import { useEffect, useState } from "react";
 
-// const states = [
-//   {
-//     name: 'BACKLOG', items: [
-//       {
-//         materialID: 'ACABAD',
-//         materialName: 'PASADOR RATITA 70 CM NEGRO',
-//         unitOfMeasure: 'PARES',
-//         purchaseQuantity: 300,
-//         costPerUnit: 23.92,
-//         purchaseDate: '2024-07-23',
-//         totalQuantityUsed: 20796,
-//         totalQuantityPurchased: 25480,
-//         lastPurchasedDate: '2022-07-08',
-//         avgDailyUsed: 98.09,
-//         avgTimeBetweenPurchases: 29.5,
-//         usedTrend: 'increasing',
-//         recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//       },
-//       {
-//         materialID: 'SLACCLAST0',
-//         materialName: 'SUELA DE CAUCHO COD 2401 CLÁSICA NUEVA T. 40',
-//         unitOfMeasure: 'UNIDADES',
-//         purchaseQuantity: 300,
-//         costPerUnit: 23.92,
-//         purchaseDate: '2024-07-23',
-//         totalQuantityUsed: 20796,
-//         totalQuantityPurchased: 25480,
-//         lastPurchasedDate: '2022-07-08',
-//         avgDailyUsed: 98.09,
-//         avgTimeBetweenPurchases: 29.5,
-//         usedTrend: 'increasing',
-//         recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//       },
-//       // {
-//       //   materialID: 'SLACCLAST0',
-//       //   materialName: 'SUELA DE CAUCHO COD 2401 CLÁSICA NUEVA T. 40',
-//       //   unitOfMeasure: 'UNIDADES',
-//       //   purchaseQuantity: 300,
-//       //   costPerUnit: 23.92,
-//       //   purchaseDate: '2024-07-23',
-//       //   totalQuantityUsed: 20796,
-//       //   totalQuantityPurchased: 25480,
-//       //   lastPurchasedDate: '2022-07-08',
-//       //   avgDailyUsed: 98.09,
-//       //   avgTimeBetweenPurchases: 29.5,
-//       //   usedTrend: 'increasing',
-//       //   recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//       // },
-//     ]
-//   },
-//   // {
-//   //   name: 'TO_BUY', items: [{
-//   //     materialID: 'ACABAD',
-//   //     materialName: 'PASADOR RATITA 70 CM NEGRO',
-//   //     unitOfMeasure: 'CONOS',
-//   //     purchaseQuantity: 300,
-//   //     costPerUnit: 23.92,
-//   //     purchaseDate: '2024-07-23',
-//   //     totalQuantityUsed: 20796,
-//   //     totalQuantityPurchased: 25480,
-//   //     lastPurchasedDate: '2022-07-08',
-//   //     avgDailyUsed: 98.09,
-//   //     avgTimeBetweenPurchases: 29.5,
-//   //     usedTrend: 'increasing',
-//   //     recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//   //   }]
-//   // },
-//   // {
-//   //   name: 'IN_BUYING_PROCESS', items: [{
-//   //     materialID: 'ACABAD',
-//   //     materialName: 'PASADOR RATITA 70 CM NEGRO',
-//   //     unitOfMeasure: 'PIES',
-//   //     purchaseQuantity: 300,
-//   //     costPerUnit: 23.92,
-//   //     purchaseDate: '2024-07-23',
-//   //     totalQuantityUsed: 20796,
-//   //     totalQuantityPurchased: 25480,
-//   //     lastPurchasedDate: '2022-07-08',
-//   //     avgDailyUsed: 98.09,
-//   //     avgTimeBetweenPurchases: 29.5,
-//   //     usedTrend: 'increasing',
-//   //     recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//   //   }]
-//   // },
-//   // {
-//   //   name: 'BOUGHT', items: [{
-//   //     materialID: 'ACABAD',
-//   //     materialName: 'PASADOR RATITA 70 CM NEGRO',
-//   //     unitOfMeasure: 'PIES',
-//   //     purchaseQuantity: 300,
-//   //     costPerUnit: 23.92,
-//   //     purchaseDate: '2024-07-23',
-//   //     totalQuantityUsed: 20796,
-//   //     totalQuantityPurchased: 25480,
-//   //     lastPurchasedDate: '2022-07-08',
-//   //     avgDailyUsed: 98.09,
-//   //     avgTimeBetweenPurchases: 29.5,
-//   //     usedTrend: 'increasing',
-//   //     recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//   //   }]
-//   // },
-//   // {
-//   //   name: 'DISMISSED', items: [{
-//   //     materialID: 'ACABAD',
-//   //     materialName: 'PASADOR RATITA 70 CM NEGRO',
-//   //     unitOfMeasure: 'PAR',
-//   //     purchaseQuantity: 300,
-//   //     costPerUnit: 23.92,
-//   //     purchaseDate: '2024-07-23',
-//   //     totalQuantityUsed: 20796,
-//   //     totalQuantityPurchased: 25480,
-//   //     lastPurchasedDate: '2022-07-08',
-//   //     avgDailyUsed: 98.09,
-//   //     avgTimeBetweenPurchases: 29.5,
-//   //     usedTrend: 'increasing',
-//   //     recommendation: 'Reabastecer inventario pronto porque el consumo diario promedio es de 98.09 unidades.'
-//   //   }]
-//   // },
-// ]
 
 interface state {
   name: string,
@@ -175,28 +57,22 @@ const getAllOrders = async () => {
   return states
 }
 
-
-
 export default function Page() {
   const [orders, setOrders] = useState<state[]>([])
 
-  useEffect(() => {
+  const renewData = () => {
     getAllOrders().then(
       (orders: state[]) => {
         console.log({ orders })
         setOrders(orders)
       }
-    )
+    );
+  }
 
+  useEffect(() => {
+    connectToServer(renewData);
+    renewData()
   }, [])
-
-
-
-  //Falta el nombre materialName
-  // Falta el unitOfMeasure
-  //
-
-
 
   return (
     <div className="flex justify-center items-center gap-4 w-full h-full">
@@ -263,9 +139,6 @@ export default function Page() {
 
         ))
       }
-
-
-
 
       {/* <div className="bg-blue-700 h-full w-[20%]">TO BUY</div>
       <div className="bg-green-500 h-full w-[20%]">IN PROCESS OF BUYING</div>
