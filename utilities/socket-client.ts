@@ -26,18 +26,12 @@ const addListeners = (socket: Socket, renewData: () => void) => {
     })
 
     socket.on('clients-updated', (clients: string[]) => {
-        console.log({ clients })
+        // console.log({ clients })
     })
 
     socket.on('OrdersChanged', (mensaje: string) => {
-        console.log({ mensaje })
+        // console.log({ mensaje })
         renewData();
     })
 
 }
-
-// export const addActionToOrdersChanged = () => {
-//     socket.on('OrdersChanged', (mensaje: string) => {
-//         console.log({ mensaje })
-//     })
-// }

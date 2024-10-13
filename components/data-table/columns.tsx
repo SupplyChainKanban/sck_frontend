@@ -125,7 +125,6 @@ export const columns: ColumnDef<ProcessedData>[] = [
                         >
                             Eliminar
                         </DropdownMenuItem>
-                        {/* <DropdownMenuItem>View payment details</DropdownMenuItem> */}
                     </DropdownMenuContent>
                 </DropdownMenu>
             )

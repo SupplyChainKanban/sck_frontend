@@ -12,13 +12,6 @@ export const SideBarMenuItem = ({ to, icon, title, description }: Props) => {
     return (
         <Link
             href={to}
-        // className={
-        //     ({ isActive }) =>
-
-        //         isActive
-        //             ? 'flex justify-center items-center bg-gray-800 rounded-md p-2 transition-colors'
-        //             : 'flex justify-center items-center hover:bg-gray-800 rounded-md p-2 transition-colors'
-        // }
         >
             <div className="flex justify-center items-center gap-4 my-2">
 

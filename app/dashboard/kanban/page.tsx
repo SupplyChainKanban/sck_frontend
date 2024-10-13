@@ -63,7 +63,6 @@ export default function Page() {
   const renewData = () => {
     getAllOrders().then(
       (orders: state[]) => {
-        console.log({ orders })
         setOrders(orders)
       }
     );

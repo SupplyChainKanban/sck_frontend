@@ -45,8 +45,6 @@ const fetchData = async (limit = 2000, page = 1) => {
 export default async function Page() {
   const { information, meta, materialIDItems } = await fetchData();
 
-  console.log({ meta })
-
   return (
     <div>
       <DataTable columns={columns} data={information} selectItems={materialIDItems} form={<ConsumptionForm />} title={'Consumos'} />
